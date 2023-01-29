@@ -1,0 +1,47 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { useSanityClient } from "astro-sanity";
+import { sanityPortableText, urlForImage } from "../../lib/portableText";
+
+export async function getStaticPaths() {
+  const query = `*[_type == "post"]`;
+
+  const allBlogPosts = await useSanityClient().fetch(query);
+
+  return allBlogPosts.map((post: any) => ({
+    params: { slug: post.slug.current },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const exchangeRateEndpoint = "https://api.exchangerate.host/latest?base=GBP";
+---
+
+<Layout title={post.title}>
+  <div class="wrapper">
+    <h2 class="text">{post.title}</h2>
+
+    <img src={urlForImage(post.featuredImage).url()} />
+
+    <time>{post.date}</time>
+
+    <ul>
+      <li>{post.location.locationName}</li>
+      <li>{post.drink}</li>
+      <li>{`${post.price.currency} ${post.price.amount}`}</li>
+    </ul>
+
+    <Fragment set:html={sanityPortableText(post.post)} />
+
+    <!-- <pre>{JSON.stringify(Astro.props, null , 2)}</pre> -->
+  </div>
+</Layout>
+<style>
+  img {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    object-fit: cover;
+    object-position: bottom;
+  }
+</style>

@@ -1,0 +1,97 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { useSanityClient } from "astro-sanity";
+import { urlForImage } from "../lib/portableText";
+
+export async function getBlogPosts() {
+  const query = `*[_type == "post"]{title, slug, location, featuredImage}`;
+  const allPosts = await useSanityClient().fetch(query);
+  return allPosts;
+}
+
+const posts: {
+  slug: { current: string };
+  title: string;
+  location: { locationName: string; country: string };
+  featuredImage: Object;
+}[] = await getBlogPosts();
+
+console.log(posts);
+---
+
+<Layout title="Picturesque Pints">
+  <div class="wrapper flow">
+    <p>
+      The loveliest pints in the best locations - curated by some goons on their
+      travels.
+    </p>
+
+    <ul class="flow">
+      {
+        posts.map((post) => {
+          return (
+            <li class="link-card">
+              <img
+                src={urlForImage(post.featuredImage)
+                  .height(90)
+                  .width(160)
+                  .quality(100)
+                  .format("webp")
+                  .url()}
+                class="rounded"
+              />
+              <div>
+                <a href={`/pints/${post.slug.current}`} class="font-bold">
+                  {post.title}
+                </a>
+                <p>
+                  {post.location.locationName}
+                  <img
+                    data-image-type="icon"
+                    src={`https://flagicons.lipis.dev/flags/4x3/${post.location.country.toLowerCase()}.svg`}
+                    alt=""
+                    class="inline ml-1"
+                  />
+                </p>
+                <p>
+                  <button>View pint 🍻</button>
+                </p>
+              </div>
+            </li>
+          );
+        })
+      }
+      {
+        posts.map((post) => {
+          return (
+            <li class="link-card">
+              <img
+                src={urlForImage(post.featuredImage)
+                  .height(90)
+                  .width(160)
+                  .quality(100)
+                  .format("webp")
+                  .url()}
+                class="rounded"
+              />
+              <div>
+                <a href={`/pints/${post.slug.current}`} class="font-bold">
+                  {post.title}
+                </a>
+                <p>
+                  {post.location.locationName}
+                  <img
+                    data-image-type="icon"
+                    src={`https://flagicons.lipis.dev/flags/4x3/${post.location.country.toLowerCase()}.svg`}
+                    alt=""
+                    class="inline ml-2"
+                  />
+                </p>
+              </div>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</Layout>

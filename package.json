@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "workspaces": [
+    "astro",
+    "sanity"
+  ],
+  "scripts": {
+    "sanity": "yarn workspace sanity dev",
+    "astro": "yarn workspace astro dev"
+  }
+}

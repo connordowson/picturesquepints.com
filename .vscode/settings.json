@@ -1,0 +1,5 @@
+{
+  "eslint.workingDirectories": ["./web", "./sanity"],
+  "dotenv.enableAutocloaking": false,
+  "editor.wordWrap": "on"
+}
