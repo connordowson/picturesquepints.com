@@ -2,6 +2,8 @@ import { defineConfig } from "astro/config";
 import sanity from "astro-sanity";
 import solidJs from "@astrojs/solid-js";
 
+import netlify from "@astrojs/netlify/functions";
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -13,4 +15,6 @@ export default defineConfig({
     }),
     solidJs(),
   ],
+  output: "server",
+  adapter: netlify(),
 });

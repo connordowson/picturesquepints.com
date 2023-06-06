@@ -1,5 +1,5 @@
 {
-  "eslint.workingDirectories": ["./web", "./sanity"],
+  "eslint.workingDirectories": ["./astro", "./sanity"],
   "dotenv.enableAutocloaking": false,
   "editor.wordWrap": "on"
 }
