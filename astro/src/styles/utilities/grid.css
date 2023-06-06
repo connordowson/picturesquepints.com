@@ -1,0 +1,15 @@
+.grid {
+  display: grid;
+  gap: var(--grid-gap, var(--space-m));
+  grid-template-columns: repeat(
+    var(--grid-placement, auto-fill),
+    minmax(var(--grid-min-item-size, 20rem), 1fr)
+  );
+  padding-inline: 0;
+  margin-bottom: 0;
+}
+
+.grid[data-layout="posts"] {
+  --grid-placement: auto-fill;
+  /* --grid-min-item-size: 18rem; */
+}

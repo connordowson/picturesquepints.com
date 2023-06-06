@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { useSanityClient } from "astro-sanity";
 import { sanityPortableText, urlForImage } from "../../lib/portableText";
+import Map from "@components/Map";
 
 export async function getStaticPaths() {
   const query = `*[_type == "post"]`;
@@ -16,32 +17,97 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const exchangeRateEndpoint = "https://api.exchangerate.host/latest?base=GBP";
+const exchangeRates = await fetch(exchangeRateEndpoint).then((res) =>
+  res.json()
+);
+const { rates } = exchangeRates;
+
+const convertCurrency = (amount: number, currency: string) => {
+  if (currency === "GBP") {
+    return amount.toFixed(2);
+  }
+
+  const rate = rates[currency];
+
+  return amount / rate;
+};
+
+const localPrice = post.price.amount.toLocaleString(post.location.country, {
+  style: "currency",
+  currency: post.price.currency,
+  minimumFractionDigits: 0,
+  maximumFractionDigits: 2,
+});
+
+const convertedAmount = convertCurrency(
+  post.price.amount,
+  post.price.currency
+).toLocaleString("EN", {
+  style: "currency",
+  currency: "GBP",
+  minimumFractionDigits: 0,
+  maximumFractionDigits: 2,
+});
+
+const mapbox_access_token = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 ---
 
 <Layout title={post.title}>
-  <div class="wrapper">
+  <article class="wrapper region flow shadow post">
     <h2 class="text">{post.title}</h2>
 
-    <img src={urlForImage(post.featuredImage).url()} />
+    <img
+      src={urlForImage(post.featuredImage)
+        .width(740)
+        .quality(100)
+        .format("webp")
+        .url()}
+      alt={post.location.locationName}
+      class="border"
+    />
 
-    <time>{post.date}</time>
-
-    <ul>
-      <li>{post.location.locationName}</li>
-      <li>{post.drink}</li>
-      <li>{`${post.price.currency} ${post.price.amount}`}</li>
-    </ul>
+    <table>
+      <tbody>
+        <tr>
+          <th>Location</th>
+          <td>{post.location.locationName}</td>
+        </tr>
+        <tr>
+          <th>Date</th>
+          <td>{post.date}</td>
+        </tr>
+        <tr>
+          <th>Drink</th>
+          <td>{post.drink}</td>
+        </tr>
+        <tr>
+          <th>Local Price</th>
+          <td>{localPrice}</td>
+        </tr>
+        <tr>
+          <th>Price in £</th>
+          <td>{convertedAmount}</td>
+        </tr>
+      </tbody>
+    </table>
 
     <Fragment set:html={sanityPortableText(post.post)} />
 
-    <!-- <pre>{JSON.stringify(Astro.props, null , 2)}</pre> -->
-  </div>
-</Layout>
-<style>
-  img {
+    <!-- <h2>Map</h2> -->
+    <Map
+      client:only
+      mapbox_access_token={mapbox_access_token}
+      lng={post.location.geopoint.lng}
+      lat={post.location.geopoint.lat}
+    />
+  </article>
+
+  <style>
+    /* img {
     aspect-ratio: 16 / 9;
     width: 100%;
     object-fit: cover;
     object-position: bottom;
-  }
-</style>
+  } */
+  </style>
+</Layout>

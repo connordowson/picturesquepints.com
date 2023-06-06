@@ -1,16 +1,24 @@
 body {
-  font-family: "Switzer";
-  /* @apply text-zinc-700; */
-  /* background-color: hsla(133, 100%, 85%, 0.7); */
-  color: hsla(133, 100%, 85%, 1);
-  background-color: hsl(270, 3%, 15%);
+  font-family: var(--body), Arial;
+  font-display: swap;
+  background-color: var(--primary);
+  color: var(--secondary);
+}
+
+header {
+  color: var(--primary);
+  background-color: var(--secondary);
+  padding: 1em;
+  text-align: center;
 }
 
 h1,
 h2,
 h3 {
-  font-family: "Switzer";
-  font-weight: 800;
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1;
 }
 
 :is(h1, h2, h3) a:any-link {
@@ -40,4 +48,62 @@ time {
 img[data-image-type="icon"] {
   height: var(--space-s);
   border-radius: 3px;
+}
+
+.wrapper:not(header) {
+  background-color: var(--primary);
+  border: 4px solid var(--secondary);
+}
+
+/* https://css-tricks.com/accessible-simple-responsive-tables/#article-header-id-2 */
+
+.table-wrapper{
+  width: 100%;
+}
+
+table {
+  width: 100%;
+  overflow: auto;
+  text-align: center;
+  border: 4px solid var(--secondary);
+  border-collapse: separate;
+  border-spacing: 4px;
+  /* padding: 2px; */
+  table-layout: fixed;
+  background-color: var(--primary);
+  font-size: var(--step-0);
+}
+
+
+
+th {
+  /* font-family: var(--display); */
+  background-color: var(--secondary);
+  padding: var(--space-m);
+}
+
+th,
+td {
+  padding-inline: var(--space-s);
+  padding-block: var(--space-2xs);
+  /* border: 4px solid var(--secondary); */
+}
+
+th {
+  padding-inline: var(--space-xs);
+  padding-block: var(--space-3xs);
+  color: var(--primary);
+  border: 4px solid var(--secondary);
+  /* text-align: left; */
+
+  /* font-size: var(--step-0); */
+}
+
+td {
+  hyphens: auto;
+  word-wrap: break-word;
+}
+
+tr {
+  margin-bottom: 4px;
 }

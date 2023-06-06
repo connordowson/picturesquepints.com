@@ -1,0 +1,6 @@
+.map{
+  width: 100%;
+  height: 300px;
+  position: relative;
+  margin-top: var(--flow-space, var(--space-xs));
+}

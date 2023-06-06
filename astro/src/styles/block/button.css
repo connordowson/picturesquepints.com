@@ -1,0 +1,9 @@
+.button {
+  background-color: var(--secondary);
+  color: var(--primary);
+  display: inline-block;
+  padding: var(--space-3xs) var(--space-2xs);
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: 2px;
+}

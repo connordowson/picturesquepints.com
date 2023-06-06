@@ -1,0 +1,3 @@
+.border {
+  border: var(--border-size, 4px) solid var(--secondary);
+}

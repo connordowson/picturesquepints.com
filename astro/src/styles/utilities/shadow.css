@@ -1,0 +1,18 @@
+.shadow {
+  transform-style: preserve-3d;
+  position: relative;
+  --shadow-border: 4px;
+}
+
+.shadow::before {
+  content: "";
+  position: absolute;
+  width: calc(100% + var(--shadow-border));
+  height: calc(100% + var(--shadow-border));
+  /* background-color: var(--secondary); */
+  border: var(--shadow-border) solid var(--secondary);
+  z-index: -2;
+  left: var(--space-2xs);
+  top: var(--space-2xs);
+  transform: translateZ(-1px);
+}

@@ -29,3 +29,11 @@
   font-display: block;
   font-style: italic;
 }
+
+@font-face {
+  font-family: "Clash Display";
+  src: url("/fonts/ClashDisplay-Variable.woff2") format("woff2");
+  font-weight: 200 900;
+  font-display: block;
+  font-style: normal;
+}

@@ -63,10 +63,6 @@ export default {
           title: "Country",
           type: "string",
           description: "Enter the countries 2 letter ISO code.",
-          // readOnly: true,
-          // components: {
-          //   input: CountryInput,
-          // },
         },
       ],
     },
@@ -85,6 +81,7 @@ export default {
           name: "currency",
           title: "Currency",
           type: "string",
+          description: "Enter the currencies 3 letter ISO code.",
         },
         {
           name: "amount",
@@ -94,11 +91,5 @@ export default {
       ],
     },
   ],
-  initialValue: {
-    country: "Testing",
-    // country: async () => {
-    //   const response = await fetch("https://swapi.dev/api/people/1");
-    //   return await response.json().name;
-    // },
-  },
+  
 };

@@ -1,11 +1,7 @@
 {
   "private": true,
-  "workspaces": [
-    "astro",
-    "sanity"
-  ],
   "scripts": {
-    "sanity": "yarn workspace sanity dev",
-    "astro": "yarn workspace astro dev"
+    "sanity": "pnpm --filter sanity dev",
+    "astro": "pnpm --filter astro dev"
   }
 }
