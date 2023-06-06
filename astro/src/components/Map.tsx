@@ -10,7 +10,7 @@ type MapProps = {
   lat: number;
 }
 
-const Map: Component = ({ mapbox_access_token, lng, lat }: MapProps) => {
+const Map: Component<MapProps> = ({ mapbox_access_token, lng, lat }: MapProps) => {
 
   const [viewport, setViewport] = createSignal({
     center: [lng, lat],
