@@ -34,10 +34,6 @@
   left: 0;
   top: 0;
 }
-.link-card a:hover,
-.link-card a:hover ~ p {
-  color: var(--primary-hover);
-}
 
 .link-card p {
   font-family: var(--copy);

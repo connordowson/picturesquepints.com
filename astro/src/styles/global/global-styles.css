@@ -12,6 +12,10 @@ header {
   text-align: center;
 }
 
+header h1 {
+  font-size: min(var(--step-5), 10vw) !important;
+}
+
 h1,
 h2,
 h3 {
@@ -57,7 +61,7 @@ img[data-image-type="icon"] {
 
 /* https://css-tricks.com/accessible-simple-responsive-tables/#article-header-id-2 */
 
-.table-wrapper{
+.table-wrapper {
   width: 100%;
 }
 
@@ -73,8 +77,6 @@ table {
   background-color: var(--primary);
   font-size: var(--step-0);
 }
-
-
 
 th {
   /* font-family: var(--display); */
@@ -106,4 +108,16 @@ td {
 
 tr {
   margin-bottom: 4px;
+}
+
+/* Global focus styles */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-style: dotted;
+  outline-offset: var(--space-3xs);
+}
+
+a:any-link:is(:hover, :focus-visible) {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
 }

@@ -1,20 +1,4 @@
 @font-face {
-  font-family: "Boska";
-  src: url("/fonts/Boska-Variable.woff2") format("woff2");
-  font-weight: 200 900;
-  font-display: block;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Boska";
-  src: url("/fonts/Boska-VariableItalic.woff2") format("woff2");
-  font-weight: 200 900;
-  font-display: block;
-  font-style: italic;
-}
-
-@font-face {
   font-family: "Switzer";
   src: url("/fonts/Switzer-Variable.woff2") format("woff2");
   font-weight: 200 900;

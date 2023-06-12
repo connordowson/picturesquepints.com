@@ -51,40 +51,22 @@ const posts: {
           }
 
           return (
-            <>
-              <li class="link-card">
-                <img
-                  src={urlForImage(post.featuredImage)
-                    .height(280)
-                    .width(350)
-                    .quality(100)
-                    .format("webp")
-                    .url()}
-                />
-                <div class="flow">
-                  <a href={`/pints/${post.slug.current}`} class="font-bold">
-                    {post.title}
-                  </a>
-                  <p>{post.location.locationName}</p>
-                </div>
-              </li>
-              <li class="link-card">
-                <img
-                  src={urlForImage(post.featuredImage)
-                    .height(280)
-                    .width(350)
-                    .quality(100)
-                    .format("webp")
-                    .url()}
-                />
-                <div class="flow">
-                  <a href={`/pints/${post.slug.current}`} class="font-bold">
-                    {post.title}
-                  </a>
-                  <p>{post.location.locationName}</p>
-                </div>
-              </li>
-            </>
+            <li class="link-card">
+              <img
+                src={urlForImage(post.featuredImage)
+                  .height(280)
+                  .width(350)
+                  .quality(100)
+                  .format("webp")
+                  .url()}
+              />
+              <div class="flow">
+                <a href={`/pints/${post.slug.current}`} class="font-bold">
+                  {post.title}
+                </a>
+                <p>{post.location.locationName}</p>
+              </div>
+            </li>
           );
         })
       }

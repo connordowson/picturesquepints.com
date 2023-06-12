@@ -1,5 +1,6 @@
 {
   "eslint.workingDirectories": ["./astro", "./sanity"],
   "dotenv.enableAutocloaking": false,
-  "editor.wordWrap": "on"
+  "editor.wordWrap": "on",
+  "prettier.prettierPath": "./node_modules/prettier"
 }

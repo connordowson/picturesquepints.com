@@ -5,18 +5,14 @@ import { sanityPortableText, urlForImage } from "../../lib/portableText";
 import Map from "@components/Map";
 
 const { slug } = Astro.params;
-console.log(slug);
 
 export async function getPintPost(slug: string) {
   const query = groq`*[_type == "post" && slug.current == "${slug}"][0]`;
-  console.log(query);
   const pintPost = await useSanityClient().fetch(query);
   return pintPost;
 }
 
 const post = await getPintPost(slug);
-
-console.log(post);
 
 const exchangeRateEndpoint = "https:api.exchangerate.host/latest?base=GBP";
 const exchangeRates = await fetch(exchangeRateEndpoint).then((res) =>
