@@ -23,11 +23,7 @@
 
   /* Colours */
 
-  --primary: hsla(133, 100%, 90%, 1);
-  --primary: hsla(46, 100%, 90%, 1);
-  --primary-hover: hsla(46, 100%, 97%, 1);
   --primary: hsla(39deg, 100%, 88%);
-
   --secondary: hsl(270, 3%, 15%);
 
   /* Fonts */

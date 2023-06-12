@@ -14,6 +14,8 @@
 
 .link-card img {
   width: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .link-card a {
@@ -55,8 +57,12 @@
   .link-card img {
     width: 100%;
     max-height: 26rem;
-    object-fit: cover;
-    object-position: top;
+  }
+}
+
+@container linkcard (max-width: 28rem) {
+  .link-card img {
+    height: 16rem;
   }
 }
 
