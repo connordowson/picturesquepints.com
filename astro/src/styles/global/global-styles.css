@@ -59,12 +59,6 @@ img[data-image-type="icon"] {
   border: 4px solid var(--secondary);
 }
 
-/* https://css-tricks.com/accessible-simple-responsive-tables/#article-header-id-2 */
-
-.table-wrapper {
-  width: 100%;
-}
-
 table {
   width: 100%;
   overflow: auto;
@@ -72,7 +66,6 @@ table {
   border: 4px solid var(--secondary);
   border-collapse: separate;
   border-spacing: 4px;
-  /* padding: 2px; */
   table-layout: fixed;
   background-color: var(--primary);
   font-size: var(--step-0);
