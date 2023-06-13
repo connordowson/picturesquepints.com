@@ -17,8 +17,17 @@ import "../styles/main.css";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-
     <title>{title}</title>
+    <!-- Cronitor RUM -->
+    <script async src="https://rum.cronitor.io/script.js"></script>
+    <script>
+      window.cronitor =
+        window.cronitor ||
+        function () {
+          (window.cronitor.q = window.cronitor.q || []).push(arguments);
+        };
+      cronitor("config", { clientKey: "90715651a3c15a9afc9820d845e9e0ca" });
+    </script>
   </head>
   <body class="region">
     <Navbar />
