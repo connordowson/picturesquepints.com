@@ -14,11 +14,14 @@ export async function getPintPost(slug: string) {
 
 const post = await getPintPost(slug);
 
-const exchangeRateEndpoint = "https:api.exchangerate.host/latest?base=GBP";
+const apiKey = import.meta.env.EXCHANGE_RATE_API_KEY;
+
+const exchangeRateEndpoint = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/GBP`;
 const exchangeRates = await fetch(exchangeRateEndpoint).then((res) =>
   res.json()
 );
-const { rates } = exchangeRates;
+
+const { conversion_rates: rates } = exchangeRates;
 
 const convertCurrency = (amount: number, currency: string) => {
   if (currency === "GBP") {
